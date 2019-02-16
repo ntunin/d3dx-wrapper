@@ -63,13 +63,13 @@
     <Compile Include="BodyBuilder.cs" />
     <Compile Include="Builder.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="DirectXComponentBuilder.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="D3DXForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="D3DXForm.Designer.cs">
+      <DependentUpon>D3DXForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectXComponentBuilder.cs" />
     <Compile Include="Light.cs" />
     <Compile Include="PerspectiveCamera.cs" />
     <Compile Include="Prefab.cs" />
