@@ -21,6 +21,8 @@ namespace D3DX
             camera = CreateCamera(control);
             light = new List<Light>();
             prefabs = new List<Prefab>();
+            AddLight();
+            AddPrefabs();
         }
 
         protected abstract Camera CreateCamera(Control control);

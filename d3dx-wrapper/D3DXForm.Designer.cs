@@ -1,4 +1,4 @@
-﻿namespace d3dx_wrapper
+﻿namespace D3DX
 {
     partial class D3DXForm
     {

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace d3dx_wrapper
+namespace D3DX
 {
     public abstract partial class D3DXForm : Form
     {
@@ -22,11 +22,9 @@ namespace d3dx_wrapper
 
         public D3DXForm()
         {
-            InitializeComponent();
-            InitializeGraphics();
         }
 
-        private void InitializeGraphics()
+        protected void InitializeGraphics()
         {
             SetStyle(ControlStyles.Opaque | ControlStyles.AllPaintingInWmPaint, true);
             PresentParameters parameters = new PresentParameters();
@@ -38,6 +36,7 @@ namespace d3dx_wrapper
             stopwatch = Stopwatch.StartNew();
             device.DeviceReset += new EventHandler(OnDeviceReset);
             device.DeviceResizing += new CancelEventHandler(OnCancelResize);
+            scene.Prepare();
             Invalidate();
         }
 

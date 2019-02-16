@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace d3dx_wrapper
+namespace D3DX
 {
     static class Program
     {

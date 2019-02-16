@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace d3dx_wrapper.Properties
+namespace D3DX.Properties
 {
 
 
