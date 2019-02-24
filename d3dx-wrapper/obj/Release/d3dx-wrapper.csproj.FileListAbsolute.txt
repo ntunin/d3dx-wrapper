@@ -1,0 +1,13 @@
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\bin\Release\d3dx-wrapper.exe.config
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\bin\Release\d3dx-wrapper.exe
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\bin\Release\d3dx-wrapper.pdb
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\bin\Release\Microsoft.DirectX.Direct3D.dll
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\bin\Release\Microsoft.DirectX.Direct3DX.dll
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\bin\Release\Microsoft.DirectX.dll
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx_wrapper.Properties.Resources.resources
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx-wrapper.csproj.GenerateResource.cache
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx-wrapper.csproj.CoreCompileInputs.cache
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx-wrapper.csproj.CopyComplete
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx-wrapper.exe
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx-wrapper.pdb
+C:\Users\Николай\Documents\GitHub\boxcraft\d3dx-wrapper\d3dx-wrapper\obj\Release\d3dx-wrapper.csprojAssemblyReference.cache

@@ -31,7 +31,9 @@ namespace D3DX
             parameters.Windowed = true;
             parameters.SwapEffect = SwapEffect.Discard;
             device = new Device(0, DeviceType.Hardware, this, CreateFlags.SoftwareVertexProcessing, parameters);
+            device.RenderState.CullMode = Cull.Clockwise;
             SceneContext.Shared.Device = device;
+     
             scene = CreateScene();
             stopwatch = Stopwatch.StartNew();
             device.DeviceReset += new EventHandler(OnDeviceReset);

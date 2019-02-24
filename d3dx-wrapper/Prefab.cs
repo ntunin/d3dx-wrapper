@@ -57,5 +57,14 @@ namespace D3DX
                 Skin.Present();
             }
         }
+
+        public void AddChild(Prefab child)
+        {
+            if(children == null)
+            {
+                children = new List<Prefab>();
+            }
+            children.Add(child);
+        }
     }
 }
