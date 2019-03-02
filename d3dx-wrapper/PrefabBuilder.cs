@@ -19,15 +19,17 @@ namespace D3DX
             Body body = null;
             Skin skin = null;
             List<Prefab> children = null;
+            Shape bound = null;
             string name = null;
             HandleActionMap(new Dictionary<string, Action<object>>
             {
                 {"Body", (object o)=>{ body = ParseBody(o);  } },
                 {"Skin", (object o)=>{ skin = SceneContext.Shared.Skins[(string)o];  } },
+                {"Bound", (object o)=>{ bound = ParseBound(o);  } },
                 {"Children", (object o)=>{ children = ParseChildren(o);  } },
                 {"Name", (object o)=>{ name = (string)o;  } }
             });
-            var prefab = new Prefab(body, skin, children);
+            var prefab = new Prefab(body, skin, bound, children);
             if (name != null)
             {
                 SceneContext.Shared.Prefabs[name] = prefab;
@@ -47,6 +49,26 @@ namespace D3DX
                 return (Body)body;
             }
             return null;
+        }
+
+        private Shape ParseBound(object o)
+        {
+            Dictionary<string, object> objectDescriptions = (Dictionary<string, object>)o;
+            string type = (string)objectDescriptions["Type"];
+            switch (type)
+            {
+                case "Box":
+                    return ParseBoxShape(objectDescriptions);
+            }
+            return null;
+        }
+
+        private Shape ParseBoxShape(Dictionary<string, object> objectDescriptions)
+        {
+            float width = float.Parse((string)objectDescriptions["Width"]);
+            float height = float.Parse((string)objectDescriptions["Height"]);
+            float depth = float.Parse((string)objectDescriptions["Depth"]);
+            return new BoxShape(width, height, depth);
         }
 
         private List<Prefab> ParseChildren(object objectsDescription)

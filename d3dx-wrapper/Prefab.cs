@@ -12,13 +12,15 @@ namespace D3DX
     {
         public Body Body;
         public Skin Skin;
+        public Shape Bound;
         private Device device = null;
         private List<Prefab> children = new List<Prefab>();
 
-        public Prefab(Body body, Skin skin, List<Prefab> children)
+        public Prefab(Body body, Skin skin, Shape bound, List<Prefab> children)
         {
             Skin = skin;
             Body = body;
+            Bound = bound;
             this.children = children;
             device = SceneContext.Shared.Device;
         }
@@ -65,6 +67,58 @@ namespace D3DX
                 children = new List<Prefab>();
             }
             children.Add(child);
+        }
+
+        public void RemoveChild(Prefab child)
+        {
+            if (children == null)
+            {
+                return;
+            }
+            children.Remove(child);
+        }
+
+        public Prefab RayCast(Ray ray)
+        {
+            Prefab raycastedPrefab = null;
+            if (Bound != null && Bound.RayCast(ray, Body.Position))
+            {
+                raycastedPrefab = this;
+            }
+            if (children != null)
+            {
+                List<Prefab> raycastedChildren = new List<Prefab>();
+                Ray prefabRay = new Ray(new Vector3(ray.Position.X - Body.Position.X,
+                                                        ray.Position.Y - Body.Position.Y,
+                                                        ray.Position.Z - Body.Position.Z), ray.Direction);
+                foreach (Prefab child in children)
+                {
+                    Prefab childRaycastedPrefab = child.RayCast(prefabRay);
+                    if (childRaycastedPrefab != null)
+                    {
+                        raycastedChildren.Add(childRaycastedPrefab);
+                    }
+                }
+                Prefab nearest = null;
+                float minDistance = 1e8f;
+                foreach (Prefab child in raycastedChildren)
+                {
+                    float distance = new Vector3(child.Body.Position.X - prefabRay.Position.X,
+                                                   child.Body.Position.Y - prefabRay.Position.Y,
+                                                   child.Body.Position.Z - prefabRay.Position.Z).Length();
+                    if (distance < minDistance)
+                    {
+                        nearest = child;
+                        minDistance = distance;
+                    }
+                }
+                if (nearest != null)
+                {
+                    raycastedPrefab = nearest;
+                }
+
+            }
+            return raycastedPrefab;
         }
     }
 }

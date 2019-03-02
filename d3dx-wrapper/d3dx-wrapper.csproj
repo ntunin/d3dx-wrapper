@@ -61,6 +61,7 @@
     <Compile Include="Behaviour.cs" />
     <Compile Include="Body.cs" />
     <Compile Include="BodyBuilder.cs" />
+    <Compile Include="BoxShape.cs" />
     <Compile Include="Builder.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="D3DXForm.cs">
@@ -76,9 +77,13 @@
     <Compile Include="PrefabBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ray.cs" />
     <Compile Include="RotationBehaviour.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="SceneContext.cs" />
+    <Compile Include="..\..\..\..\Shape.cs">
+      <Link>Shape.cs</Link>
+    </Compile>
     <Compile Include="Skin.cs" />
     <Compile Include="SkinBuilder.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
