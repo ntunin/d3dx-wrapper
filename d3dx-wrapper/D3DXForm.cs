@@ -34,7 +34,9 @@ namespace D3DX
             parameters.AutoDepthStencilFormat = DepthFormat.D16;
             device = new Device(0, DeviceType.Hardware, this, CreateFlags.SoftwareVertexProcessing, parameters);
             SceneContext.Shared.Device = device;
-     
+            device.RenderState.Lighting = false;
+            device.RenderState.CullMode = Cull.None;
+
             scene = CreateScene();
             stopwatch = Stopwatch.StartNew();
             device.DeviceReset += new EventHandler(OnDeviceReset);

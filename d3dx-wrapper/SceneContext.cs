@@ -12,6 +12,19 @@ namespace D3DX
     {
         private static SceneContext shared;
 
+        public class MeshData
+        {
+            public Mesh mesh;
+            public ExtendedMaterial[] materials;
+
+            public MeshData(Mesh mesh, ExtendedMaterial[] materials)
+            {
+                this.mesh = mesh;
+                this.materials = materials;
+            }
+
+        }
+
         public static SceneContext Shared
         {
             get
@@ -29,6 +42,7 @@ namespace D3DX
         public Dictionary<string, Body> Bodies = new Dictionary<string, Body>();
         public Dictionary<string, Skin> Skins = new Dictionary<string, Skin>();
         public Dictionary<string, Prefab> Prefabs = new Dictionary<string, Prefab>();
+        public Dictionary<string, MeshData> Meshes = new Dictionary<string, MeshData>();
 
     }
 }
