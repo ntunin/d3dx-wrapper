@@ -30,8 +30,9 @@ namespace D3DX
             PresentParameters parameters = new PresentParameters();
             parameters.Windowed = true;
             parameters.SwapEffect = SwapEffect.Discard;
+            parameters.EnableAutoDepthStencil = true;
+            parameters.AutoDepthStencilFormat = DepthFormat.D16;
             device = new Device(0, DeviceType.Hardware, this, CreateFlags.SoftwareVertexProcessing, parameters);
-            device.RenderState.CullMode = Cull.Clockwise;
             SceneContext.Shared.Device = device;
      
             scene = CreateScene();
@@ -62,7 +63,7 @@ namespace D3DX
                 return;
             }
             float deltaTime = CalculateNewDeltaTime();
-            device.Clear(ClearFlags.Target, Color.Gray, 1.0f, 0);
+            device.Clear(ClearFlags.Target  | ClearFlags.ZBuffer, Color.Gray, 1.0f, 0);
 
             device.BeginScene();
             scene.Present(deltaTime);
