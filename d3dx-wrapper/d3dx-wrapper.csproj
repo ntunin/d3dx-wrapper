@@ -61,7 +61,9 @@
     <Compile Include="Behaviour.cs" />
     <Compile Include="Body.cs" />
     <Compile Include="BodyBuilder.cs" />
-    <Compile Include="BoxShape.cs" />
+    <Compile Include="..\..\..\..\BoxShape.cs">
+      <Link>BoxShape.cs</Link>
+    </Compile>
     <Compile Include="Builder.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="D3DXForm.cs">

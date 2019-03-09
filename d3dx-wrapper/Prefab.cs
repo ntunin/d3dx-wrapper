@@ -15,6 +15,7 @@ namespace D3DX
         public Shape Bound;
         private Device device = null;
         private List<Prefab> children = new List<Prefab>();
+        public Prefab parent;
 
         public Prefab(Body body, Skin skin, Shape bound, List<Prefab> children)
         {
@@ -22,6 +23,13 @@ namespace D3DX
             Body = body;
             Bound = bound;
             this.children = children;
+            if (children != null)
+            {
+                foreach (Prefab child in children)
+                {
+                    child.parent = this;
+                }
+            }
             device = SceneContext.Shared.Device;
         }
 
@@ -67,6 +75,7 @@ namespace D3DX
                 children = new List<Prefab>();
             }
             children.Add(child);
+            child.parent = this;
         }
 
         public void RemoveChild(Prefab child)
@@ -76,6 +85,7 @@ namespace D3DX
                 return;
             }
             children.Remove(child);
+            child.parent = null;
         }
 
         public Prefab RayCast(Ray ray)
@@ -119,6 +129,18 @@ namespace D3DX
 
             }
             return raycastedPrefab;
+        }
+
+        public Vector3 GetGlobalPosition()
+        {
+            Vector3 position = new Vector3();
+            Prefab prefab = this;
+            while(prefab != null)
+            {
+                position.Add(prefab.Body.Position);
+                prefab = prefab.parent;
+            }
+            return position;
         }
     }
 }
