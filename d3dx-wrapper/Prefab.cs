@@ -14,7 +14,7 @@ namespace D3DX
         public Skin Skin;
         public Shape Bound;
         private Device device = null;
-        private List<Prefab> children = new List<Prefab>();
+        public List<Prefab> children = new List<Prefab>();
         public Prefab parent;
 
         public Prefab(Body body, Skin skin, Shape bound, List<Prefab> children)
@@ -86,49 +86,6 @@ namespace D3DX
             }
             children.Remove(child);
             child.parent = null;
-        }
-
-        public Prefab RayCast(Ray ray)
-        {
-            Prefab raycastedPrefab = null;
-            if (Bound != null && Bound.RayCast(ray, Body.Position))
-            {
-                raycastedPrefab = this;
-            }
-            if (children != null)
-            {
-                List<Prefab> raycastedChildren = new List<Prefab>();
-                Ray prefabRay = new Ray(new Vector3(ray.Position.X - Body.Position.X,
-                                                        ray.Position.Y - Body.Position.Y,
-                                                        ray.Position.Z - Body.Position.Z), ray.Direction);
-                foreach (Prefab child in children)
-                {
-                    Prefab childRaycastedPrefab = child.RayCast(prefabRay);
-                    if (childRaycastedPrefab != null)
-                    {
-                        raycastedChildren.Add(childRaycastedPrefab);
-                    }
-                }
-                Prefab nearest = null;
-                float minDistance = 1e8f;
-                foreach (Prefab child in raycastedChildren)
-                {
-                    float distance = new Vector3(child.Body.Position.X - prefabRay.Position.X,
-                                                   child.Body.Position.Y - prefabRay.Position.Y,
-                                                   child.Body.Position.Z - prefabRay.Position.Z).Length();
-                    if (distance < minDistance)
-                    {
-                        nearest = child;
-                        minDistance = distance;
-                    }
-                }
-                if (nearest != null)
-                {
-                    raycastedPrefab = nearest;
-                }
-
-            }
-            return raycastedPrefab;
         }
 
         public Vector3 GetGlobalPosition()
